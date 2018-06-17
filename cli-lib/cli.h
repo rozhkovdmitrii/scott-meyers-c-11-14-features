@@ -1,8 +1,6 @@
-//
-// Created by rozhkovdmitrii on 16.06.2018.
-//
-
 #ifndef STANDARD_FEATURES_MEYERS_CLI_H
 #define STANDARD_FEATURES_MEYERS_CLI_H
+
+
 
 #endif //STANDARD_FEATURES_MEYERS_CLI_H

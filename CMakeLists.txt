@@ -3,4 +3,6 @@ project(standard_features_meyers)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(1.1-type-deduction 1.1-type-deduction/main.cpp)
+include_directories($ENV{BOOST_INCLUDE})
+
+add_executable(1.1-type-deduction 1-type-deduction/main.cpp cli-lib/cli.h cli-lib/cli-lib.cpp)

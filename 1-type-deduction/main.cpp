@@ -65,7 +65,7 @@ int main() {
   unvRefParamDeductInfo(i, "lvalue int");
   unvRefParamDeductInfo(ci, "lvalue const int");
   unvRefParamDeductInfo(cri, "lavlue const int &");
-  unvRefParamDeductInfo(reinterpret_cast<int>(1), "rvalue int");
+  unvRefParamDeductInfo(1, "rvalue int");
 
   return 0;
 }
