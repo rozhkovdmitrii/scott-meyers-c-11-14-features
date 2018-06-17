@@ -1,7 +1,7 @@
 #ifndef STANDARD_FEATURES_MEYERS_TEMPLATETYPEDEDUCTION_HPP
 #define STANDARD_FEATURES_MEYERS_TEMPLATETYPEDEDUCTION_HPP
 
-
+#include <boost/type_index.hpp>
 
 using namespace boost::typeindex;
 
@@ -47,11 +47,7 @@ void unvRefParamDeductInfo(T &&param, const char *initType)
             << std::endl;
 };
 
-void printHelpMsg() {
-  std::cout << "Usage:"
-               "cpp-type-deduction [--testme|--tips]" << std::endl;
-
-}
+void printHelpMsg();
 
 template<typename T, std::size_t N>
 void printCaption(T (&capValue)[N]  ) {
@@ -67,50 +63,9 @@ constexpr void compileTimePrint(T (&StringParam)[N]) {
   std::cout << StringParam << std::endl;
 }
 
-void printArrayTypeDeductionSpecific() {
+void printArrayTypeDeductionSpecific();
 
-  printCaption("C-style array type deduction:");
-  const char chArr[] = {'a', 'b', 'c', 'd', 'e'};
-  refParamDeductInfo(chArr, "const char [5]");
-};
-
-void printTypeDeductionTips() {
-
-  printCaption("Template function type deduction:");
-
-  int i = 1;
-  int const ci = 2;
-  int const & cri = ci;
-
-  paramDeductInfo(i, "int");
-  paramDeductInfo(ci, "int const");
-  paramDeductInfo(cri, "int const &");
-
-  std::cout << std::endl;
-
-
-  refParamDeductInfo(i, "int");
-  refParamDeductInfo(ci, "int const");
-  refParamDeductInfo(cri, "int const &");
-
-  std::cout << std::endl;
-
-  constrefParamDeductInfo(i, "int");
-  constrefParamDeductInfo(ci, "int const");
-  constrefParamDeductInfo(cri, "int const &");
-
-  std::cout << std::endl;
-
-  char const * const cp2cch = "Hi everybody!!";
-  paramDeductInfo(cp2cch, "char const * const");
-  ptrParamDeductInfo(cp2cch, "char const * const");
-
-  std::cout << std::endl;
-  unvRefParamDeductInfo(i, "lvalue int");
-  unvRefParamDeductInfo(ci, "lvalue const int");
-  unvRefParamDeductInfo(cri, "lavlue const int &");
-  unvRefParamDeductInfo(1, "rvalue, int");
-}
+void printTypeDeductionTips();
 
 template<typename OrigT>
 void printPrompt(const char * paramTypeView) {

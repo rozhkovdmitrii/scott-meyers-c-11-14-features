@@ -1,6 +1,4 @@
 #include <iostream>
-#include <boost/type_index.hpp>
-
 #include "templateTypeDeduction.hpp"
 
 int main(int argc, const char **argv) {
