@@ -3,4 +3,4 @@ project(standard_features_meyers)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(1.1-type-deduction 1.1-type-deduction/main.cpp)
+add_executable(cpp-template-type-deduction 1.1-type-deduction/main.cpp 1.1-type-deduction/templateTypeDeduction.cpp 1.1-type-deduction/templateTypeDeduction.hpp)
