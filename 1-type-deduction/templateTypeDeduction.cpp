@@ -1,9 +1,10 @@
 #include <iostream>
 #include "templateTypeDeduction.hpp"
-
+#include "cli.h"
 
 void printTypeDeductionTips() {
-    printCaption("Template function type deduction:");
+
+    cli::printCaption("Template function type deduction:");
 
     int i = 1;
     int const ci = 2;
@@ -43,9 +44,3 @@ void printHelpMsg() {
     std::cout << "Usage:"
     "cpp-type-deduction [--testme|--tips]" << std::endl;
 }
-
-void printArrayTypeDeductionSpecific() {
-    printCaption("C-style array type deduction:");
-    const char chArr[] = {'a', 'b', 'c', 'd', 'e'};
-    refParamDeductInfo(chArr, "const char [5]");
-};

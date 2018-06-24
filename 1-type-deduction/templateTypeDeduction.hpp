@@ -1,19 +1,26 @@
 #ifndef STANDARD_FEATURES_MEYERS_TEMPLATETYPEDEDUCTION_HPP
 #define STANDARD_FEATURES_MEYERS_TEMPLATETYPEDEDUCTION_HPP
 
+#include <iostream>
 #include <boost/type_index.hpp>
 
 using namespace boost::typeindex;
 
 template<typename T>
-std::string paramDeductInfo(T param, const char *initType)
+void paramDeductInfo(T param, const char *initType)
 {
-  std::string resultType = type_id_with_cvr<T>().pretty_name();
-
   std::cout << initType << " -> (T param) -> "
-            << resultType << std::endl;
-  return resultType;
+            << type_id_with_cvr<T>().pretty_name() << std::endl;
 };
+
+template <typename T>
+void constParamDeductInfo(const T param, const char *initType)
+{
+  std::cout << initType << " -> (const T param) -> "
+            << type_id_with_cvr<T>().pretty_name()
+            << std::endl;
+}
+
 template<typename T>
 void refParamDeductInfo(T &param, const char *initType)
 {
@@ -48,15 +55,6 @@ void unvRefParamDeductInfo(T &&param, const char *initType)
 };
 
 void printHelpMsg();
-
-template<typename T, std::size_t N>
-void printCaption(T (&capValue)[N]  ) {
-    std::cout << std::endl <<
-"************************************************************************************************************************" <<
-    capValue << std::endl <<
-"************************************************************************************************************************" <<
-    std::endl << std::endl;
-};
 
 template<typename T, std::size_t N>
 constexpr void compileTimePrint(T (&StringParam)[N]) {
