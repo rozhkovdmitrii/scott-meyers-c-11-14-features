@@ -6,6 +6,12 @@
                     "123456789 123456789 123456789 123456789 123456789 !");
 }*/
 
+template<typename T, size_t N, typename F>
+void forEachOnAnArray(T (&inmemArray)[N], F &callback) {
+  for (int i = 0; i < N; ++i)
+    callback(inmemArray[i]);
+};
+
 int main(int argc, const char **argv) {
 
   cli::printCaption("TYPE DEDUCTION FOR ARRAY OF CHAR");
@@ -25,5 +31,10 @@ int main(int argc, const char **argv) {
 
   paramDeductInfo(classASeq, "class A[]");
   refParamDeductInfo(classASeq, "class A[]");
+
+  cli::printCaption("TYPE DEDUCTED FOREACH ON AN ARRAY");
+
+  auto printInt = [](int value) { std::cout << " " << value; };
+  forEachOnAnArray(intSeq, printInt);
 
 }
