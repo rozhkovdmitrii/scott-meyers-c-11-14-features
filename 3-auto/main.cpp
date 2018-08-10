@@ -1,36 +1,18 @@
 #include <iostream>
 #include <boost/type_index.hpp>
 #include <functional>
-#include <bits/unordered_map.h>
 #include <unordered_map>
 class A {
 
 public:
+
+  A(): _value("A default") {}
+  A(const std::initializer_list<int> & list): _value("A from initializer list") {}
+  A(const double p1, const double p2): _value("constructed from 2 double")  {}
+  A(const int p1, const std::string & p2): _value("constructed from 2 parameters")  {}
+
   std::string _value;
-  A(): _value("A default") {
-
-  }
-
-  A(const std::initializer_list<int> & list): _value("A from initializer list") {
-
-
-  }
-
-  A(const int p1, const std::string & p2): _value("constructed from 2 parameters")  {
-
-  }
-
-  A(const double p1, const double p2): _value("constructed from 2 double")  {
-
-  }
 };
-
-struct B {
-  int a;
-  int b;
-  int c;
-};
-
 
 template<typename T>
 void func(const std::initializer_list<T> & param) {
@@ -41,10 +23,8 @@ template<typename T> struct vec {
   vec(std::initializer_list<T>){};
 };
 
-
 const auto ff(const std::string & str) {
   auto ggbb = [& str](const auto & value)
-
   {
     return str;
   };
@@ -56,15 +36,15 @@ int main(int argc, const char **argv)  {
   auto a = 1;
   auto b = {1,2};
 
-/*  A c {1., 11.};*/
-
-/*  std::cout << c._value;*/
-
-
   vec<int> v1{{{}}};
 
 
-  B d {.a = 1, 3,  .c = 3};
+
+  struct B {
+    int a;
+    int b;
+    int c;
+  } d {.a = 1, 3,  .c = 3};
 
   auto ar = a;
   decltype(auto) arr = a;
@@ -94,8 +74,10 @@ int main(int argc, const char **argv)  {
 
   std::unordered_map<std::string, int> m;
 
-/*  for (const auto & p: m)
-    std::cout << p.second << std::endl;*/
+  for (const auto & p: m)
+    std::cout << p.second << std::endl;
+
+  A aa = {1.0, 0.1};
 
 }
 

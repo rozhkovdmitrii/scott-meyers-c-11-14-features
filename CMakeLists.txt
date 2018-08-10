@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 project(standard_features_meyers)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
 include_directories($ENV{BOOST_INCLUDE})
 
@@ -20,3 +20,6 @@ add_executable(arr-and-func-type-deduction
   cli-lib/cli-lib.cpp)
 
 target_include_directories(arr-and-func-type-deduction PUBLIC 1-type-deduction cli-lib)
+
+
+add_executable(auto-samples 3-auto/main.cpp)
